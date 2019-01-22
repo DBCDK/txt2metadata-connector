@@ -113,35 +113,35 @@ public class Txt2MetadataConnector {
         failSafeHttpClient.getClient().close();
     }
 
-    public List<Txt2MetaData> getMetaDataForArticle(String articleId) throws Txt2MetaDataConnectorException {
-        return getMetaDataForArticle(articleId, DEFAULT_MATCHES);
+    public List<Txt2Metadata> getMetadataForArticle(String articleId) throws Txt2MetadataConnectorException {
+        return getMetadataForArticle(articleId, DEFAULT_MATCHES);
     }
 
-    public List<Txt2MetaData> getMetaDataForArticle(String articleId, int matches) throws Txt2MetaDataConnectorException {
+    public List<Txt2Metadata> getMetadataForArticle(String articleId, int matches) throws Txt2MetadataConnectorException {
         return getRequest(PATH_SUGGESTIONS_FOR_ARTICLE, articleId, matches);
     }
 
 
-    public List<Txt2MetaData> getMetaDataForArticles(List<String> articleIds) throws Txt2MetaDataConnectorException {
-        return getMetaDataForArticles(articleIds, DEFAULT_MATCHES);
+    public List<Txt2Metadata> getMetadataForArticles(List<String> articleIds) throws Txt2MetadataConnectorException {
+        return getMetadataForArticles(articleIds, DEFAULT_MATCHES);
     }
 
-    public List<Txt2MetaData> getMetaDataForArticles(List<String> articleIds, int matches) throws Txt2MetaDataConnectorException {
+    public List<Txt2Metadata> getMetadataForArticles(List<String> articleIds, int matches) throws Txt2MetadataConnectorException {
         final String body = "\"" + String.join("\",\"", articleIds) + "\"";
 
         return postRequest(PATH_SUGGESTIONS_FOR_ARTICLES, body, matches);
     }
 
-    public List<Txt2MetaData> getMetaDataForText(String text) throws Txt2MetaDataConnectorException {
-        return getMetaDataForText(text, DEFAULT_MATCHES);
+    public List<Txt2Metadata> getMetadataForText(String text) throws Txt2MetadataConnectorException {
+        return getMetadataForText(text, DEFAULT_MATCHES);
     }
 
-    public List<Txt2MetaData> getMetaDataForText(String text, int matches) throws Txt2MetaDataConnectorException {
+    public List<Txt2Metadata> getMetadataForText(String text, int matches) throws Txt2MetadataConnectorException {
         return postRequest(PATH_SUGGESTIONS_ON_TEXT, text, matches);
     }
 
-    private List<Txt2MetaData> getRequest(String basePath, String articleId, int matches)
-            throws Txt2MetaDataConnectorException {
+    private List<Txt2Metadata> getRequest(String basePath, String articleId, int matches)
+            throws Txt2MetadataConnectorException {
         InvariantUtil.checkNotNullNotEmptyOrThrow(articleId, "articleId");
         final PathBuilder path = new PathBuilder(basePath)
                 .bind(PATH_VARIABLE_ARTICLE_ID, articleId);
@@ -158,7 +158,7 @@ public class Txt2MetadataConnector {
 
             assertResponseStatus(response, Response.Status.OK);
 
-            return readResponseEntity(response, new GenericType<List<Txt2MetaData>>() {
+            return readResponseEntity(response, new GenericType<List<Txt2Metadata>>() {
             });
         } finally {
             logger.log("GET {} took {} milliseconds", String.join("/", path.build()),
@@ -166,7 +166,7 @@ public class Txt2MetadataConnector {
         }
     }
 
-    private List<Txt2MetaData> postRequest(String basePath, String data, int matches) throws Txt2MetaDataConnectorException {
+    private List<Txt2Metadata> postRequest(String basePath, String data, int matches) throws Txt2MetadataConnectorException {
         final Stopwatch stopwatch = new Stopwatch();
 
         final PathBuilder path = new PathBuilder(basePath);
@@ -180,7 +180,7 @@ public class Txt2MetadataConnector {
                     .withQueryParameter("matches", matches);
             final Response response = httpPost.execute();
             assertResponseStatus(response, Response.Status.OK);
-            return readResponseEntity(response, new GenericType<List<Txt2MetaData>>() {
+            return readResponseEntity(response, new GenericType<List<Txt2Metadata>>() {
             });
         } finally {
             logger.log("POST {} took {} milliseconds", String.join("/", path.build()),
@@ -188,23 +188,23 @@ public class Txt2MetadataConnector {
         }
     }
 
-    private <T> T readResponseEntity(Response response, GenericType<T> genericType) throws Txt2MetaDataConnectorException {
+    private <T> T readResponseEntity(Response response, GenericType<T> genericType) throws Txt2MetadataConnectorException {
         response.bufferEntity();
         final T entity = response.readEntity(genericType);
         if (entity == null) {
-            throw new Txt2MetaDataConnectorException(
+            throw new Txt2MetadataConnectorException(
                     String.format("job-store service returned with null-valued %s entity", genericType.getRawType().getName()));
         }
         return entity;
     }
 
     private void assertResponseStatus(Response response, Response.Status expectedStatus)
-            throws Txt2MetaDataConnectorUnexpectedStatusCodeException {
+            throws Txt2MetadataConnectorUnexpectedStatusCodeException {
         final Response.Status actualStatus =
                 Response.Status.fromStatusCode(response.getStatus());
         LOGGER.info("Status code: {}", response.getStatus());
         if (actualStatus != expectedStatus) {
-            throw new Txt2MetaDataConnectorUnexpectedStatusCodeException(
+            throw new Txt2MetadataConnectorUnexpectedStatusCodeException(
                     String.format("txt2metadata service returned with unexpected status code: %s",
                             actualStatus),
                     actualStatus.getStatusCode());

@@ -5,7 +5,7 @@
 
 package dk.dbc.txt2metadata;
 
-public class Txt2MetaDataConnectorUnexpectedStatusCodeException extends Txt2MetaDataConnectorException {
+public class Txt2MetadataConnectorUnexpectedStatusCodeException extends Txt2MetadataConnectorException {
     private final int statusCode;
 
     /**
@@ -18,7 +18,7 @@ public class Txt2MetaDataConnectorUnexpectedStatusCodeException extends Txt2Meta
      *                   {@link #getMessage()} method. May be null.
      * @param statusCode the http status code returned by the REST service
      */
-    public Txt2MetaDataConnectorUnexpectedStatusCodeException(String message, int statusCode) {
+    public Txt2MetadataConnectorUnexpectedStatusCodeException(String message, int statusCode) {
         super(message);
         this.statusCode = statusCode;
     }

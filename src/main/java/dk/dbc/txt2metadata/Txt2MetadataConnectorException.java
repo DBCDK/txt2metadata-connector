@@ -5,9 +5,9 @@
 
 package dk.dbc.txt2metadata;
 
-public class Txt2MetaDataConnectorException extends Exception {
+public class Txt2MetadataConnectorException extends Exception {
 
-    public Txt2MetaDataConnectorException(String message) {
+    public Txt2MetadataConnectorException(String message) {
         super(message);
     }
 }

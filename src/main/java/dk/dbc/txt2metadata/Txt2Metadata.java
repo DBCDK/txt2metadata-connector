@@ -5,14 +5,14 @@
 
 package dk.dbc.txt2metadata;
 
-public class Txt2MetaData {
+public class Txt2Metadata {
     private String value;
     private int score;
     private String type;
 
     @Override
     public String toString() {
-        return "Txt2MetaData{" +
+        return "Txt2Metadata{" +
                 "value='" + value + '\'' +
                 ", score=" + score +
                 ", type='" + type + '\'' +

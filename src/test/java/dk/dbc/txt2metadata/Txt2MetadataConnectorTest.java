@@ -22,7 +22,7 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Txt2MetaDataConnectorTest {
+public class Txt2MetadataConnectorTest {
 
     private static WireMockServer wireMockServer;
     private static String wireMockHost;
@@ -51,52 +51,52 @@ public class Txt2MetaDataConnectorTest {
     }
 
     @Test
-    void testGetMetaDataForArticle() throws Txt2MetaDataConnectorException {
+    void testGetMetadataForArticle() throws Txt2MetadataConnectorException {
         String articleId = "e70a69a1";
 
-        List<Txt2MetaData> txt2MetaDataList = connector.getMetaDataForArticle(articleId);
+        List<Txt2Metadata> txt2MetadataList = connector.getMetadataForArticle(articleId);
 
-        assertThat(txt2MetaDataList.size(), is(2));
-        assertThat(txt2MetaDataList.get(0).getValue(), is("652*m97.8"));
-        assertThat(txt2MetaDataList.get(0).getScore(), is(2));
-        assertThat(txt2MetaDataList.get(0).getType(), is("dk5"));
-        assertThat(txt2MetaDataList.get(1).getValue(), is("610*aJydsk Boldspil-Union*2ARTB"));
-        assertThat(txt2MetaDataList.get(1).getScore(), is(1));
-        assertThat(txt2MetaDataList.get(1).getType(), is("emne"));
+        assertThat(txt2MetadataList.size(), is(2));
+        assertThat(txt2MetadataList.get(0).getValue(), is("652*m97.8"));
+        assertThat(txt2MetadataList.get(0).getScore(), is(2));
+        assertThat(txt2MetadataList.get(0).getType(), is("dk5"));
+        assertThat(txt2MetadataList.get(1).getValue(), is("610*aJydsk Boldspil-Union*2ARTB"));
+        assertThat(txt2MetadataList.get(1).getScore(), is(1));
+        assertThat(txt2MetadataList.get(1).getType(), is("emne"));
     }
 
     @Test
-    void testGetMetaDataForArticles() throws Txt2MetaDataConnectorException {
+    void testGetMetadataForArticles() throws Txt2MetadataConnectorException {
         List<String> articleIds = Arrays.asList("e70a69a1", "e70a7341");
 
-        List<Txt2MetaData> txt2MetaDataList = connector.getMetaDataForArticles(articleIds);
+        List<Txt2Metadata> txt2MetadataList = connector.getMetadataForArticles(articleIds);
 
-        assertThat(txt2MetaDataList.size(), is(2));
-        assertThat(txt2MetaDataList.get(0).getValue(), is("652*m97.8"));
-        assertThat(txt2MetaDataList.get(0).getScore(), is(2));
-        assertThat(txt2MetaDataList.get(0).getType(), is("dk5"));
-        assertThat(txt2MetaDataList.get(1).getValue(), is("666*fvelfærdsstaten"));
-        assertThat(txt2MetaDataList.get(1).getScore(), is(1));
-        assertThat(txt2MetaDataList.get(1).getType(), is("emne"));
+        assertThat(txt2MetadataList.size(), is(2));
+        assertThat(txt2MetadataList.get(0).getValue(), is("652*m97.8"));
+        assertThat(txt2MetadataList.get(0).getScore(), is(2));
+        assertThat(txt2MetadataList.get(0).getType(), is("dk5"));
+        assertThat(txt2MetadataList.get(1).getValue(), is("666*fvelfærdsstaten"));
+        assertThat(txt2MetadataList.get(1).getScore(), is(1));
+        assertThat(txt2MetadataList.get(1).getType(), is("emne"));
     }
 
 
     @Test
-    void testGetMetaDataForText() throws Txt2MetaDataConnectorException {
+    void testGetMetadataForText() throws Txt2MetadataConnectorException {
         String text = "Det er en ældre herre, der i ' The Mule' har sat sig bag rattet i en lidt yngre, støvet pickup-truck af mærket Ford. Virkelighedens Leo Sharp var 88 år, da han blev narkokurér for Sinaloa-kartellet. Sharp er i filmversionen omdøbt til Earl Stone og spilles af Clint Eastwood, der også er blevet 88. Så det har ikke krævet den vilde method acting.";
 
-        List<Txt2MetaData> txt2MetaDataList = connector.getMetaDataForText(text);
+        List<Txt2Metadata> txt2MetadataList = connector.getMetadataForText(text);
 
-        assertThat(txt2MetaDataList.size(), is(3));
-        assertThat(txt2MetaDataList.get(0).getValue(), is("630*ftrash metal*2ARTB"));
-        assertThat(txt2MetaDataList.get(0).getScore(), is(1));
-        assertThat(txt2MetaDataList.get(0).getType(), is("emne"));
-        assertThat(txt2MetaDataList.get(1).getValue(), is("630*aArtillery (rockgruppe)"));
-        assertThat(txt2MetaDataList.get(1).getScore(), is(1));
-        assertThat(txt2MetaDataList.get(1).getType(), is("emne"));
-        assertThat(txt2MetaDataList.get(2).getValue(), is("630*ferkendelsesteori*2ARTB"));
-        assertThat(txt2MetaDataList.get(2).getScore(), is(1));
-        assertThat(txt2MetaDataList.get(2).getType(), is("emne"));
+        assertThat(txt2MetadataList.size(), is(3));
+        assertThat(txt2MetadataList.get(0).getValue(), is("630*ftrash metal*2ARTB"));
+        assertThat(txt2MetadataList.get(0).getScore(), is(1));
+        assertThat(txt2MetadataList.get(0).getType(), is("emne"));
+        assertThat(txt2MetadataList.get(1).getValue(), is("630*aArtillery (rockgruppe)"));
+        assertThat(txt2MetadataList.get(1).getScore(), is(1));
+        assertThat(txt2MetadataList.get(1).getType(), is("emne"));
+        assertThat(txt2MetadataList.get(2).getValue(), is("630*ferkendelsesteori*2ARTB"));
+        assertThat(txt2MetadataList.get(2).getScore(), is(1));
+        assertThat(txt2MetadataList.get(2).getType(), is("emne"));
     }
 
 }
