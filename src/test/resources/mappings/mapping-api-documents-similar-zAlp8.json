@@ -1,0 +1,22 @@
+{
+  "id" : "add164b3-276b-3a19-846f-8e1b059678b4",
+  "request" : {
+    "url" : "/api/documents/similar?matches=10",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalTo" : "Det er en ældre herre, der i ' The Mule' har sat sig bag rattet i en lidt yngre, støvet pickup-truck af mærket Ford. Virkelighedens Leo Sharp var 88 år, da han blev narkokurér for Sinaloa-kartellet. Sharp er i filmversionen omdøbt til Earl Stone og spilles af Clint Eastwood, der også er blevet 88. Så det har ikke krævet den vilde method acting."
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-api-documents-similar-zAlp8.json",
+    "headers" : {
+      "Server" : "nginx/1.10.3",
+      "Date" : "Tue, 22 Jan 2019 11:46:47 GMT",
+      "Content-Type" : "application/json",
+      "Transfer-Encoding" : "chunked",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "add164b3-276b-3a19-846f-8e1b059678b4"
+}
