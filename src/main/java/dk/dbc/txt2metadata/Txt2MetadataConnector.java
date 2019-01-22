@@ -34,8 +34,8 @@ public class Txt2MetadataConnector {
     private static final String PATH_VARIABLE_ARTICLE_ID = "articleId";
     private static final String PATH_SUGGESTIONS_FOR_ARTICLE = String.format("/api/documents/similar/{%s}",
             PATH_VARIABLE_ARTICLE_ID);
-    private static final String PATH_SUGGESTIONS_FOR_ARTICLES = String.format("/api/documents/similar/articleids");
-    private static final String PATH_SUGGESTIONS_ON_TEXT = String.format("/api/documents/similar");
+    private static final String PATH_SUGGESTIONS_FOR_ARTICLES = "/api/documents/similar/articleids";
+    private static final String PATH_SUGGESTIONS_ON_TEXT = "/api/documents/similar";
     private static final RetryPolicy RETRY_POLICY = new RetryPolicy()
             .retryOn(Collections.singletonList(ProcessingException.class))
             .retryIf((Response response) -> response.getStatus() == 404 || response.getStatus() == 502)
