@@ -1,0 +1,22 @@
+{
+  "id" : "24db1052-5f2e-3cd4-868c-fb4185fe1a43",
+  "request" : {
+    "url" : "/api/documents/similar/articleids?matches=10",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalTo" : "\"e70a69a1\",\"e70a7341\""
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-api-documents-similar-articleids-L0j1j.json",
+    "headers" : {
+      "Server" : "nginx/1.10.3",
+      "Date" : "Tue, 22 Jan 2019 11:46:46 GMT",
+      "Content-Type" : "application/json",
+      "Transfer-Encoding" : "chunked",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "24db1052-5f2e-3cd4-868c-fb4185fe1a43"
+}

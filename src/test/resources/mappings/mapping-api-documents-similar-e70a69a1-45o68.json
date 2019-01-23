@@ -1,0 +1,19 @@
+{
+  "id" : "16887d16-9feb-3e28-9d05-2df4ac98e8d1",
+  "request" : {
+    "url" : "/api/documents/similar/e70a69a1?matches=10",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-api-documents-similar-e70a69a1-45o68.json",
+    "headers" : {
+      "Server" : "nginx/1.10.3",
+      "Date" : "Tue, 22 Jan 2019 11:46:45 GMT",
+      "Content-Type" : "application/json",
+      "Transfer-Encoding" : "chunked",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "16887d16-9feb-3e28-9d05-2df4ac98e8d1"
+}
